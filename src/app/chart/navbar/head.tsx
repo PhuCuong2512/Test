@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CalendarIcon, FileTextIcon }  from "@radix-ui/react-icons";
+import { FileTextIcon }  from "@radix-ui/react-icons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CustomInput from "@/components/custom-input"; // Assumed you have this component
@@ -17,8 +16,14 @@ const Header: React.FC = () => {
   const [endDate, setEndDate] = useState<Date | null>(new Date());
   const router = useRouter();
 
+  const handleValueChange = (value: string) => {
+    setCategory(value);
+  };
 
-  const handleSubmit = () => {
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); // Sử dụng biến event
+    console.log(category);
     // Your submit logic here
   };
   const handleFileTextIconClick = () => {
@@ -33,7 +38,7 @@ const Header: React.FC = () => {
     <div className=" top-0 w-full h-20 z-[49] bg-white px-6 lg:px-4 flex  items-center shadow-md text-sm rounded">
       {/* Category Select */}
       <div className="w-[20%] text-orange-500 rounded">
-        <Select onValueChange={setCategory} defaultValue="Tất cả danh mục">
+        <Select onValueChange={handleValueChange} defaultValue="Tất cả danh mục">
           <SelectTrigger className="w-full border border-gray-300 ">
             <SelectValue placeholder="Tất cả danh mục" />
           </SelectTrigger>

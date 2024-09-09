@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CalendarIcon, FileTextIcon }  from "@radix-ui/react-icons";
+import { FileTextIcon }  from "@radix-ui/react-icons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CustomInput from "@/components/custom-input"; // Assumed you have this component
@@ -18,7 +17,9 @@ const Header: React.FC = () => {
   const router = useRouter();
 
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); // Sử dụng biến event
+    console.log(category);
     // Your submit logic here
   };
   const handleFileTextIconClick = () => {

@@ -1,5 +1,4 @@
 import DataTable from "./navbar/chart";
-import MyChart from "./navbar/chart";
 import Header from "./navbar/head";
 import List from "./navbar/list";
 import CreateTable from "./navbar/table";
